@@ -1,0 +1,43 @@
+<div class="row animated fadeIn">
+    <div class="col-md-7">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Perfil del Usuario</h3>
+            <p class="text-muted m-b-30 font-13"> nombre usuario </p>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form ngNativeValidate [formGroup]="profileForm" (ngSubmit)="save(profileForm.value)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Usuario</label>
+                            <input type="text" class="form-control" formControlName="name" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" formControlName="email" placeholder="Email">
+                        </div>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                          <i class="fa fa-save"></i>
+                          Guardar
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-tittle">Fotografía del usuario</h4>
+                <h6 class="card-subtitle">nombre usuario</h6>
+                <img *ngIf="!imageTmp" [src]="user.img | image" class="w150" alt="">
+                <img *ngIf="imageTmp" [src]="imageTmp" class="w150" alt="">
+
+                <input (change)="selectImage( $event.target.files[0] )" type="File" class="">
+                <br><br>
+                <button (click)="changeImage()" [disabled]="!imageUpload" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Actualizar Foto
+                  </button>
+            </div>
+        </div>
+    </div>
+</div>
